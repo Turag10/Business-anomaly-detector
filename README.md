@@ -158,8 +158,8 @@ The models were evaluated by comparing their anomaly predictions to identify bot
 ```text
 financial-transaction-anomaly-detection/
 │
-├── README.md                    # Project documentation
-├── requirements.txt             # Python dependencies
+├── README.md                    # Project documentation 
 ├── bank_transactions_data_2.csv # Dataset
-└── ml_anomaly_detection.ipynb   # End-to-end project notebook
+├── ml_anomaly_detection.ipynb   # End-to-end project notebook
+└── requirements.txt             # Python dependencies
 ```
