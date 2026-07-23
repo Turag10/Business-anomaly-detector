@@ -42,7 +42,9 @@ The dataset used in this project is the **Bank Transaction Dataset for Fraud Det
 - Missing Values: **None**
 - Duplicate Records: **None**
 
-### Key features include:
+### Key Features
+
+The following feature descriptions are adapted from the dataset documentation provided:
 
 - **TransactionID**: Unique alphanumeric identifier for each transaction.
 - **AccountID**: Unique identifier for each account, with multiple transactions per account.
