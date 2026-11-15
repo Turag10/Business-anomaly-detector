@@ -1,9 +1,15 @@
 
-# **A Machine Learning Approach to Detecting Anomalous Banking Transactions**
+# **FinShield — Autonomous Financial Anomaly Surveillance**
+
+<p align="center">
+  <img src="assets/logo.jpg" alt="FinShield Logo" width="160" />
+  <br>
+  <em>Intelligent Transaction Defense &amp; Anomaly Intelligence</em>
+</p>
 
 ## Overview
 
-This project focuses on identifying anomalous banking transactions by analyzing transaction behavior, customer behavior, security behavior, and behavioral patterns using the Bank Transaction Dataset for Fraud Detection by Vala Khorasani. Since the dataset does not contain historical fraud labels, unsupervised anomaly detection techniques are applied to identify transactions that deviate from normal customer behavior.
+**FinShield** is an enterprise-grade financial surveillance and behavioral fraud intelligence platform. It focuses on identifying anomalous banking transactions by analyzing transaction velocity, account balance depletion ratios, security credentials, and behavioral patterns using the Bank Transaction Dataset for Fraud Detection. Since the dataset does not contain historical fraud labels, unsupervised ensemble anomaly detection techniques (Isolation Forest + Local Outlier Factor) are applied alongside SHAP explainability and interactive case management to protect banking portfolios.
 
 ## Project Workflow
 
@@ -160,8 +166,73 @@ The models were evaluated by comparing their anomaly predictions to identify bot
 ```text
 financial-transaction-anomaly-detection/
 │
-├── README.md                    # Project documentation 
-├── bank_transactions_data_2.csv # Dataset
-├── ml_anomaly_detection.ipynb   # End-to-end project notebook
-└── requirements.txt             # Python dependencies
+├── app.py                       # Enterprise Streamlit Web Platform
+├── api.py                       # Production FastAPI REST microservice
+├── pipeline.py                  # Feature engineering, SHAP, and ML pipeline
+├── db.py                        # SQLite Case Management Database
+├── cases.db                     # SQLite investigation storage
+├── run_app.bat                  # One-click Windows application launcher
+├── Dockerfile                   # Docker containerization
+├── docker-compose.yml           # Multi-service container orchestration
+├── bank_transactions_data_2.csv # Baseline dataset
+├── ml_anomaly_detection.ipynb   # End-to-end research notebook
+├── models/                      # Saved models (Isolation Forest, LOF, Scaler, SHAP)
+├── requirements.txt             # Python dependencies
+└── README.md                    # Project documentation 
 ```
+
+## Running the Platform
+
+### The Easiest Way: 1-Click Windows Launcher
+Simply double-click **`run_app.bat`**. An interactive menu will appear:
+- Press **`1`** for the **Interactive Web Dashboard** (Streamlit at `http://localhost:8501`)
+- Press **`2`** for the **Production REST API** (FastAPI Swagger Docs at `http://localhost:8000/docs`)
+- Press **`3`** to launch **Both Services simultaneously**
+
+### Command Line
+```bash
+# To run the Web Dashboard:
+.\.venv\Scripts\streamlit.exe run app.py
+
+# To run the REST API:
+.\.venv\Scripts\uvicorn.exe api:app --reload --port 8000
+```
+
+---
+
+## Key Enterprise Features Built
+
+1. **Authentication & User Management**:
+   - Secure login and registration portal backed by salted PBKDF2-SHA256 password hashing.
+   - Smooth entrance, floating security scanner beacon, and transition animations.
+   - Operator profile badge in sidebar with persistent session state and 1-click Sign Out.
+   - Pre-seeded Demo Accounts for immediate testing:
+     - `analyst` / `investigator123` (Sarah Jenkins, Fraud Operations Analyst)
+     - `admin` / `admin123` (Alex Vance, Lead Risk Architect)
+
+2. **Universal Dataset Audit (Test ANY Dataset)**:
+   - Upload *any* custom banking/transaction CSV.
+   - **Smart Column Auto-Mapping**: Automatically detects amounts, balances, timestamps, account IDs, and channels.
+   - **Fresh Auto-Training Engine**: Directly fits unsupervised anomaly detectors onto any custom dataset schema in seconds.
+   - Download filtered audit reports as CSV.
+
+3. **Explainable AI (SHAP TreeExplainer)**:
+   - Decomposes predictions to show the exact behavioral parameters (e.g. device change, high amount-to-balance ratio, login attempts) pushing an entry into the anomaly zone.
+
+4. **Unified Risk Index (0–100%) & Sensitivity Tuning**:
+   - Normalized continuous score combining Isolation Forest decision boundaries and Local Outlier Factor density.
+   - Dynamic contamination slider (1% to 15%) in the sidebar.
+
+5. **Interactive Geographic Threat Map**:
+   - Visualizes transaction clusters and high-risk anomalies across U.S. metropolitan regions.
+
+6. **1-Click Fraud Attack Presets**:
+   - Instant simulation buttons for *Account Takeover (ATO)*, *Midnight Account Drain*, and *Rapid Velocity Carding*.
+
+7. **Analyst Case Management System**:
+   - Integrated SQLite database to escalate suspicious transactions, assign investigator verdicts (*Confirmed Fraud*, *False Positive*, *Under Review*), and log notes.
+
+8. **Production REST API (`/api/v1/predict`)**:
+   - High-throughput FastAPI endpoints with automated Swagger UI documentation for external banking system integration.
+
+
